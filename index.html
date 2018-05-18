@@ -34,8 +34,8 @@ $('#my').jexcel({
 });
 </script>
 <input id="btn" type="button" value="draw"/>
-<div class="chart-container" style="position: relative; height:400px; width:400px">
-<canvas id="myChart"></canvas>
+<div id="chart-container" style="position: relative; height:400px; width:400px">
+<canvas id='myChart'></canvas>
 </div>
 <script>
 $('#btn').click(
@@ -51,6 +51,9 @@ data.forEach(function(item){
 });
 console.log(labelsArr);
 console.log(dataArr);
+console.log($("#canvas-container").value);
+$("#chart-container").empty();
+$("#chart-container").html("<canvas id='myChart'></canvas>");
 var ctx = document.getElementById("myChart");
 var myChart = new Chart(ctx, {
     type: 'bar',
