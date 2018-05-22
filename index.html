@@ -2,96 +2,195 @@
     <head>
         <meta charset="UTF-8">
     
-<script src="./libs/jquery.min.js"></script>
+        <script src="./libs/jquery.min.js"></script>
+        <script src="./libs/jquery.jexcel.js"></script>
+        <script src="./libs/jquery.jcalendar.js"></script>
+        <script src="./libs/Chart.bundle.min.js"></script>
+        <script type="text/JavaScript" src="./libs/jquery.print.js"></script>
 
-<script src="./libs/jquery.jexcel.js"></script>
-<script src="./libs/jquery.jcalendar.js"></script>
-<script src="./libs/Chart.bundle.min.js"></script>
-
-
-<link rel="stylesheet" href="./css/jquery.jexcel.css" type="text/css" />
-<link rel="stylesheet" href="./css/jquery.jcalendar.css" type="text/css" />
+        <link rel="stylesheet" href="./css/jquery.jexcel.css" type="text/css" />
+        <link rel="stylesheet" href="./css/jquery.jcalendar.css" type="text/css" />
+        <link rel="stylesheet" href="./css/style.css" type="text/css"/>
 </head>
 <body>
-<div id="my"></div>
+    <img src = "" style="display:none;" id = "printImg" height="100px"/>
+    <center>
+        <input type = "text" size = "50" id = "title" value = "Τίτλος"/>
+    </center>
+    <section class = "container">
+    <div class = "left">
+        <div id="my"></div>
+    </div>
+    <script>
+        data = [
+            [' ', ' ', 0],
+            [' ', ' ', 0],
+            [' ', ' ', 0],
+            [' ', ' ', 0],
+        ];
 
-<script>
-data = [
-    [' ', 0],
-    [' ', 0],
-    [' ', 0],
-    [' ', 0],
-];
+        $('#my').jexcel({
+            data:data,
+            colHeaders:  [ 'α/α', 'Αντικείμενο', 'Τιμή'],
+            colWidths: [ 20, 300, 80 ],
+            columns: [
+                { type: 'text'},
+                { type: 'text'},
+                { type: 'text' },
+            ]
+        });
+    </script>
+    <div class="right">
+        <div id="chart-container" style="position: relative; height:400px; width:400px">
+            <canvas id='myChart'></canvas>
+        </div>
+    </div>
+    </section>
+    <input type ='submit' value='draw' id = 'drawBtn'>
+    <input type='submit' value='refresh' id = 'refreshBtn'/>
+    <input type='submit' value='print' id = 'printBtn'/>
+    <input type='submit' value='sort asc' id = 'sortAscBtn'/>
+    <input type='submit' value='sort desc' id = 'sortDescBtn'/>
 
-$('#my').jexcel({
-    data:data,
-    colHeaders:  [ 'Αντικείμενο', 'Ποσό'],
-    colWidths: [ 300, 80 ],
-    columns: [
-        { type: 'text'},
-        { type: 'text' },
-    ]
-});
-</script>
-<input id="btn" type="button" value="draw"/>
-<div id="chart-container" style="position: relative; height:400px; width:400px">
-<canvas id='myChart'></canvas>
-</div>
-<script>
-$('#btn').click(
-function(){
-var data = $('#my').jexcel('getData', false);
-console.log(data);
-var labelsArr = [];
-var dataArr = [];
-data.forEach(function(item){
-  console.log(item[0],item[1]);
-  labelsArr.push(item[0]);
-  dataArr.push(item[1]);
-});
-console.log(labelsArr);
-console.log(dataArr);
-console.log($("#canvas-container").value);
-$("#chart-container").empty();
-$("#chart-container").html("<canvas id='myChart'></canvas>");
-var ctx = document.getElementById("myChart");
-var myChart = new Chart(ctx, {
-    type: 'bar',
-    data: {
-        labels: labelsArr,
-        datasets: [{
-            label: 'Διάγραμμα',
-            data: dataArr,
-            backgroundColor: [
-                'rgba(255, 99, 132, 0.2)',
-                'rgba(54, 162, 235, 0.2)',
-                'rgba(255, 206, 86, 0.2)',
-                'rgba(75, 192, 192, 0.2)',
-            ],
-            borderColor: [
-                'rgba(255,99,132,1)',
-                'rgba(54, 162, 235, 1)',
-                'rgba(255, 206, 86, 1)',
-                'rgba(75, 192, 192, 1)',
-            ],
-            borderWidth: 1
-        }]
-    },
-    options: {
-	showTooltips: false,
-        scales: {
-            yAxes: [{
-                ticks: {
-                    beginAtZero:true
+    
+    <script>
+        var labelsArr = [];
+        var dataArr = [];
+
+        function redraw(){
+            $("#chart-container").empty();
+            $("#chart-container").html("<canvas id='myChart'></canvas>");
+            ctx = document.getElementById("myChart");
+            var data = $('#my').jexcel('getData', false);
+            labelsArr = [];
+            dataArr = [];
+            data.forEach(function(item){
+              console.log(item[1],item[2]);
+              labelsArr.push(item[1]);
+              dataArr.push(item[2]);
+            });
+
+            var myChart = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: labelsArr,
+                    datasets: [{
+                        data: dataArr,
+                        backgroundColor: [
+                            'rgba(255, 99, 132, 0.9)',
+                            'rgba(54, 162, 235, 0.9)',
+                            'rgba(255, 206, 86, 0.9)',
+                            'rgba(75, 192, 192, 0.9)',
+                        ],
+                        borderColor: [
+                            'rgba(255,99,132,1)',
+                            'rgba(54, 162, 235, 1)',
+                            'rgba(255, 206, 86, 1)',
+                            'rgba(75, 192, 192, 1)',
+                        ],
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    animation:{
+                        onComplete: function(animation){
+                                console.log(this.toBase64Image());
+                                $("#printImg").attr('src', this.toBase64Image());
+                        }
+                    },
+                    legend: {
+                        display: false,
+                    },
+                    title: {
+                        display: true,
+                        text: $('#graphTitle').val(),
+                    },
+                    showTooltips: false,
+                    scales: {
+                        yAxes: [{
+                            ticks: {
+                                beginAtZero:true
+                            }
+                        }]
+                    }
                 }
-            }]
-        }
-    }
-});
+            });
 
+        } 
+        $('#drawBtn').click(
+            function(){
+                console.log(labelsArr);
+                console.log(dataArr);
+                console.log($("#canvas-container").value);
+                redraw();
+            });
 
+        $('#printBtn').click(
+            function(){
+                console.log($("#chart-container").printElement);
+                $("#printImg").print();
+            });
+        $('#refreshBtn').click(
+            function(){
+                        data = [
+                            [' ', ' ', 0],
+                            [' ', ' ', 0],
+                            [' ', ' ', 0],
+                            [' ', ' ', 0],
+                        ];
+        $('#my').jexcel({
+            data:data,
+            colHeaders:  [ 'α/α', 'Αντικείμενο', 'Τιμή'],
+            colWidths: [ 20, 300, 80 ],
+            columns: [
+                { type: 'text'},
+                { type: 'text'},
+                { type: 'text' },
+            ]
+        });
+        redraw();
+        });
+        $('#sortAscBtn').click(
+            function(){
+                var data = $('#my').jexcel('getData', false);
+                data.sort(function(a, b) {
+                    return (parseInt(a[2]) < parseInt(b[2]) ? -1 : ((parseInt(a[2]) == parseInt(b[2])) ? 0 : 1));
+                //Sort could be modified to, for example, sort on the age 
+                // if the name is the same.
+            });
+        $('#my').jexcel({
+            data:data,
+            colHeaders:  [ 'α/α', 'Αντικείμενο', 'Τιμή'],
+            colWidths: [ 20, 300, 80 ],
+            columns: [
+                { type: 'text'},
+                { type: 'text'},
+                { type: 'text' },
+            ]
+        });
+        redraw();
+    });
+        $('#sortDescBtn').click(
+            function(){
+                var data = $('#my').jexcel('getData', false);
+                data.sort(function(a, b) {
+                    return (parseInt(a[2]) > parseInt(b[2]) ? -1 : ((parseInt(a[2]) == parseInt(b[2])) ? 0 : 1));
+                //Sort could be modified to, for example, sort on the age 
+                // if the name is the same.
+            });
+        $('#my').jexcel({
+            data:data,
+            colHeaders:  [ 'α/α', 'Αντικείμενο', 'Τιμή'],
+            colWidths: [ 20, 300, 80 ],
+            columns: [
+                { type: 'text'},
+                { type: 'text'},
+                { type: 'text' },
+            ]
+        });
+        redraw();
+    });
 
-});
-</script>
+    </script>
 </body>
 </html>
