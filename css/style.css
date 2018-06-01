@@ -1,24 +1,35 @@
-#title {
-border: none;
-border-color: transparent;
-width: 80%;
-font-size:36px;
-font-weight: bold;
-font-style: italic;}
+#toolbar {
+	display:table;
+	font-family: 'Roboto', sans serif;
+	color:#222;
+	width:470px;
+}
 
-.container {
-    width: 80%;
-    height: 200px;
-    margin: auto;
-    padding: 10px;
+.fa {
+	margin: 2px;
 }
-.left {
-    width: 40%;
-    float: left;
-    height: 400px;
+
+.toolbarLine{
+	display:table-row;
+	border-color:darkgray;
+	border-width:2;
+	background-color:lightgray;
 }
-.right {
-	float:right;
-	height: 400px;
-    /*margin-left: 1%;*/
+.btn {
+	float:left;
+	background-color:inherit;
+    margin:2px 2px 2px 2px;
+	padding:5px 5px 5px 5px;
+	cursor: pointer;
+	border-color:black;
+	border-width: 1px;
+	border-style: solid;
 }
+#title {
+	border: none;
+	border-color: transparent;
+	width: 80%;
+	font-size:36px;
+	font-weight: bold;
+	font-style: italic;}
+
