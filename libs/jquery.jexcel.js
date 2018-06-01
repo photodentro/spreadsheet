@@ -934,14 +934,14 @@ var methods = {
                                 }
                             }
                             // If not edition check if the selected cell is in the last row
-                            if ($.fn.jexcel.defaults[$.fn.jexcel.current].allowInsertRow == true ) {
+                            /*if ($.fn.jexcel.defaults[$.fn.jexcel.current].allowInsertRow == true ) {
                                 if ($.fn.jexcel.defaults[$.fn.jexcel.current].allowManualInsertRow == true) {
                                     if (columnId[1] == $.fn.jexcel.defaults[$.fn.jexcel.current].data.length - 1) {
                                         // New record in case selectedCell in the last row
                                         $('#' + $.fn.jexcel.current).jexcel('insertRow');
                                     }
                                 }
-                            }
+                            }*/
                             // Go to the next line
                             cell = $($.fn.jexcel.selectedCell).parent().next().find('#' + columnId[0] + '-' + (parseInt(columnId[1]) + 1));
                             e.preventDefault();
