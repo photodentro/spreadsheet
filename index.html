@@ -15,7 +15,6 @@
         <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet"> 
 </head>
 <body>
-    <img src = "" style="display:none;" id = "printImg" height="100px"/>
     <div style="width:100%" id="container">
         <div style="width:470px; margin:0 auto;">
             <div id="toolbar">
@@ -25,6 +24,9 @@
                     </div>
                     <div class="btn" id="insertRow"  onclick="insertRow();">
                         <i class="fa fa-plus-square"></i>Εισαγωγή γραμμής
+                    </div>
+                    <div class="btn" id="deleteRow" onclick="deleteRow();">
+                        <i class="fa fa-minus-square"></i>Αφαίρεση γραμμής
                     </div>
                 </div>
                 <div class="toolbarLine" id="secondLine" >
@@ -37,17 +39,22 @@
                     </div>
                 </div>
                 <div class="toolbarLine" id="thirdLine">
-                    <div class="btn" id="print" onclick="print();">
+                    <div class="btn" id="print" onclick="printDiv();">
                         <i class="fa fa-print"></i>Εκτύπωση
                     </div>
                 </div>
             </div>
-            <input type = "text" size = "50" id = "title" value = "Τίτλος" style="text-align:center"/>
-        
-        <div id="my"></div>
-        <canvas id='myChart'>
-            Your browser does not support HTML5
-        </canvas>
+            <div id=" id="printArea">
+                <input type = "text" size = "50" id = "title" value = "Τίτλος"/>
+                <!--jexcel-->
+                <div id="my"></div>
+                <div id="chart-container">
+                <canvas id='myChart'>
+                    Your browser does not support HTML5
+                </canvas>
+                </div>
+                <img src = "" style="display:none;width:470px;" id = "printImg"/>
+            </div>
         </div>
     </div>
     

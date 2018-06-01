@@ -7,6 +7,8 @@
 
 window.onload = init;
 
+
+
 var labelsArr = [];
 var dataArr = [];
 
@@ -20,7 +22,6 @@ function redraw(){
     labelsArr = [];
     dataArr = [];
     data.forEach(function(item){
-      console.log(item[1],item[2]);
       labelsArr.push(item[1]);
       dataArr.push(item[2]);
     });
@@ -60,7 +61,6 @@ function redraw(){
         options: {
             animation:{
                 onComplete: function(animation){
-                        /*console.log(this.toBase64Image());*/
                         $("#printImg").attr('src', this.toBase64Image());
                 }
             },
@@ -84,80 +84,8 @@ function redraw(){
         }
     });
 
-} 
-$('#drawBtn').click(
-    function(){
-        console.log(labelsArr);
-        console.log(dataArr);
-        console.log($("#canvas-container").value);
-        redraw();
-    });
+}
 
-$('#printBtn').click(
-    function(){
-        console.log($("#chart-container").printElement);
-        $("#printImg").print();
-    });
-$('#refreshBtn').click(
-    function(){
-                data = [
-                    [' ', ' ', 0],
-                    [' ', ' ', 0],
-                    [' ', ' ', 0],
-                    [' ', ' ', 0],
-                ];
-$('#my').jexcel({
-    data:data,
-    colHeaders:  [ 'α/α', 'Αντικείμενο', 'Τιμή'],
-    colWidths: [ 20, 300, 80 ],
-    columns: [
-        { type: 'text'},
-        { type: 'text'},
-        { type: 'text' },
-    ]
-});
-redraw();
-});
-$('#sortAscBtn').click(
-    function(){
-        var data = $('#my').jexcel('getData', false);
-        data.sort(function(a, b) {
-            return (parseInt(a[2]) < parseInt(b[2]) ? -1 : ((parseInt(a[2]) == parseInt(b[2])) ? 0 : 1));
-        //Sort could be modified to, for example, sort on the age 
-        // if the name is the same.
-    });
-$('#my').jexcel({
-    data:data,
-    colHeaders:  [ 'α/α', 'Αντικείμενο', 'Τιμή'],
-    colWidths: [ 20, 300, 80 ],
-    columns: [
-        { type: 'text'},
-        { type: 'text'},
-        { type: 'text' },
-    ]
-});
-redraw();
-});
-$('#sortDescBtn').click(
-    function(){
-        var data = $('#my').jexcel('getData', false);
-        data.sort(function(a, b) {
-            return (parseInt(a[2]) > parseInt(b[2]) ? -1 : ((parseInt(a[2]) == parseInt(b[2])) ? 0 : 1));
-        //Sort could be modified to, for example, sort on the age 
-        // if the name is the same.
-    });
-$('#my').jexcel({
-    data:data,
-    colHeaders:  [ 'α/α', 'Αντικείμενο', 'Τιμή'],
-    colWidths: [ 20, 300, 80 ],
-    columns: [
-        { type: 'text'},
-        { type: 'text'},
-        { type: 'text' },
-    ]
-});
-redraw();
-});
 function init(){
     data = [
         [' ', ' ', 0],
@@ -165,16 +93,39 @@ function init(){
 
     $('#my').jexcel({
         data:data,
+        onchange: function(){redraw();},
         colHeaders:  [ 'α/α', 'Αντικείμενο', 'Τιμή'],
         colWidths: [ 20, 300, 80 ],
         columns: [
             { type: 'text'},
             { type: 'text'},
-            { type: 'text' },
+            { type: 'numeric' },
         ]
     });
     redraw();
 }
+$('#title').change(function(){redraw();});
+
 function insertRow(){
     $('#my').jexcel('insertRow', 1);
+}
+
+function deleteRow(){
+    var data = $('#my').jexcel('getData', false);
+    $('#my').jexcel('deleteRow', data.length-1);
+    redraw();
+}
+
+function sortAsc(){
+    $('#my').jexcel('orderBy',2,2);
+    redraw();
+}
+
+function sortDesc(){
+    $('#my').jexcel('orderBy',2,1);
+    redraw();
+}
+
+function printDiv(){
+    $('#printImg').print();
 }
