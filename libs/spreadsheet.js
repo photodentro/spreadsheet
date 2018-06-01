@@ -55,10 +55,9 @@ function redraw(){
                 "Darkgray"
                 ],
                 borderWidth: 1
-            }]
+            }],
         },
         options: {
-
             animation:{
                 onComplete: function(animation){
                         /*console.log(this.toBase64Image());*/

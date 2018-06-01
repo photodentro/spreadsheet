@@ -956,6 +956,7 @@ var methods = {
                                 }
                             }
                             // Tab key - Get the id of the selected cell
+                            /*
                             if ($.fn.jexcel.defaults[$.fn.jexcel.current].allowInsertColumn == true) {
                                 if ($.fn.jexcel.defaults[$.fn.jexcel.current].allowManualInsertColumn == true) {
                                     if (columnId[0] == $.fn.jexcel.defaults[$.fn.jexcel.current].data[0].length - 1) {
@@ -963,7 +964,7 @@ var methods = {
                                         $('#' + $.fn.jexcel.current).jexcel('insertColumn');
                                     }
                                 }
-                            }
+                            }*/
                             // Highlight new column
                             if (! $($.fn.jexcel.selectedCell).hasClass('edition')) {
                                cell = $($.fn.jexcel.selectedCell).next();
