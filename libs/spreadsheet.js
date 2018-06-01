@@ -127,5 +127,7 @@ function sortDesc(){
 }
 
 function printDiv(){
+    $('#printImg').css("display","block");
     $('#printImg').print();
+    $('#printImg').css("display","none");
 }

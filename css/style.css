@@ -13,11 +13,10 @@
 	display:table-row;
 	border-color:darkgray;
 	border-width:2;
-	background-color:lightgray;
 }
 .btn {
 	float:left;
-	background-color:inherit;
+	background-color:lightgray;
     margin:2px 2px 2px 2px;
 	padding:5px 5px 5px 5px;
 	cursor: pointer;
