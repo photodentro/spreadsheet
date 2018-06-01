@@ -131,3 +131,12 @@ function printDiv(){
     $('#printImg').print();
     $('#printImg').css("display","none");
 }
+
+function redojexcel(){
+    $('#my').jexcel('redo');
+    redraw();
+}
+function undojexcel(){
+    $('#my').jexcel('undo');
+    redraw();
+}
