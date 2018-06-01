@@ -99,14 +99,26 @@ $('#printBtn').click(
         console.log($("#chart-container").printElement);
         $("#printImg").print();
     });
-var newFile = 
+$('#refreshBtn').click(
     function(){
                 data = [
                     [' ', ' ', 0],
+                    [' ', ' ', 0],
+                    [' ', ' ', 0],
+                    [' ', ' ', 0],
                 ];
-    redraw();
-    console.log('newFile');
-}
+$('#my').jexcel({
+    data:data,
+    colHeaders:  [ 'α/α', 'Αντικείμενο', 'Τιμή'],
+    colWidths: [ 20, 300, 80 ],
+    columns: [
+        { type: 'text'},
+        { type: 'text'},
+        { type: 'text' },
+    ]
+});
+redraw();
+});
 $('#sortAscBtn').click(
     function(){
         var data = $('#my').jexcel('getData', false);
@@ -150,9 +162,6 @@ redraw();
 function init(){
     data = [
         [' ', ' ', 0],
-        [' ', ' ', 0],
-        [' ', ' ', 0],
-        [' ', ' ', 0],
     ];
 
     $('#my').jexcel({
@@ -166,4 +175,7 @@ function init(){
         ]
     });
     redraw();
+}
+function insertRow(){
+    $('#my').jexcel('insertRow', 1);
 }
