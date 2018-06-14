@@ -93,7 +93,7 @@ function init(){
 
     $('#my').jexcel({
         data:data,
-        onchange: function(){redraw();},
+        //onchange: function(){redraw();},
         colHeaders:  [ 'α/α', 'Αντικείμενο', 'Τιμή'],
         colWidths: [ 20, 300, 80 ],
         columns: [
@@ -102,9 +102,10 @@ function init(){
             { type: 'numeric' },
         ]
     });
-    redraw();
+    //redraw();
 }
-$('#title').change(function(){redraw();});
+$('#title').change(function(){//redraw();
+  });
 
 function insertRow(){
     $('#my').jexcel('insertRow', 1);
@@ -113,17 +114,17 @@ function insertRow(){
 function deleteRow(){
     var data = $('#my').jexcel('getData', false);
     $('#my').jexcel('deleteRow', data.length-1);
-    redraw();
+    //redraw();
 }
 
 function sortAsc(){
     $('#my').jexcel('orderBy',2,2);
-    redraw();
+    //redraw();
 }
 
 function sortDesc(){
     $('#my').jexcel('orderBy',2,1);
-    redraw();
+    //redraw();
 }
 
 function printDiv(){
@@ -134,9 +135,9 @@ function printDiv(){
 
 function redojexcel(){
     $('#my').jexcel('redo');
-    redraw();
+    //redraw();
 }
 function undojexcel(){
     $('#my').jexcel('undo');
-    redraw();
+    //redraw();
 }
