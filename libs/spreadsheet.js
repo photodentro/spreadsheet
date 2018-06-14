@@ -22,8 +22,8 @@ function redraw(){
     labelsArr = [];
     dataArr = [];
     data.forEach(function(item){
-      labelsArr.push(item[1]);
-      dataArr.push(item[2]);
+      labelsArr.push(item[0]);
+      dataArr.push(item[1]);
     });
 
     var myChart = new Chart(ctx, {
@@ -88,16 +88,15 @@ function redraw(){
 
 function init(){
     data = [
-        [' ', ' ', 0],
+        [' ', 0],
     ];
 
     $('#my').jexcel({
         data:data,
         //onchange: function(){redraw();},
-        colHeaders:  [ 'α/α', 'Αντικείμενο', 'Τιμή'],
-        colWidths: [ 20, 300, 80 ],
+        colHeaders:  ['Είδος', 'Ποσότητα'],
+        colWidths: [ 300, 80 ],
         columns: [
-            { type: 'text'},
             { type: 'text'},
             { type: 'numeric' },
         ]
