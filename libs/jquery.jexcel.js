@@ -415,7 +415,7 @@ var methods = {
                                 $("#jexcel_contextmenu").html(contextMenuContent);
 
                                 // Show jexcel context menu
-                                $("#jexcel_contextmenu").css({ display:'block', top: e.pageY + "px", left: e.pageX + "px" });
+                                $("#jexcel_contextmenu").css({ display:'none', top: e.pageY + "px", left: e.pageX + "px" });
 
                                 // Avoid the real one
                                 e.preventDefault();

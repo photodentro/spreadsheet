@@ -1,3 +1,15 @@
+body{
+	
+}
+
+#container {
+	background-image: url('../imgs/background.svg');
+	background-repeat: no-repeat;
+	background-size: 1024px 768px;
+	width: 1024px;
+
+}
+
 #toolbar {
 	display:table;
 	font-family: 'Roboto', sans serif;
@@ -16,20 +28,27 @@
 }
 .btn {
 	float:left;
-	background-color:lightgray;
-    margin:2px 2px 2px 2px;
-	padding:5px 5px 5px 5px;
+	background-color:transparent;
 	cursor: pointer;
-	border-color:black;
-	border-width: 1px;
-	border-style: solid;
+	margin: 5px 5px 5px 5px;
+}
+.btn img{
+	width: 40px;
+	height: 40px;
 }
 #title {
 	border: none;
 	border-color: transparent;
+	background-color:transparent;
 	width: 80%;
 	font-size:36px;
 	font-weight: bold;
 	font-style: italic;
     text-align:center;}
 
+#chart-container {
+	background-color: transparent;
+	border-color : black;
+	border-width : 2px;
+	margin-top : 50px;
+}

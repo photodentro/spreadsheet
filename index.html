@@ -5,7 +5,7 @@
         <script src="./libs/jquery.min.js"></script>
         <script src="./libs/jquery.jexcel.js"></script>
         <script src="./libs/jquery.jcalendar.js"></script>
-        <script src="./libs/Chart.bundle.min.js"></script>
+        <script src="./libs/chart.bundle.min.js"></script>
         <script type="text/JavaScript" src="./libs/jquery.print.js"></script>
         
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
@@ -15,49 +15,8 @@
         <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet"> 
 </head>
 <body>
-    <div style="width:100%" id="container">
+    <div id="container" >
         <div style="width:470px; margin:0 auto;">
-            <div id="toolbar">
-                <div class="toolbarLine" id="firstLine" >
-                    <div class="btn" id="newFile"  onclick="init();">
-                        <i class="fa fa-file"></i>Νέο
-                    </div>
-                    <div class="btn" id="insertRow"  onclick="insertRow();">
-                        <i class="fa fa-plus-square"></i>Εισαγωγή γραμμής
-                    </div>
-                    <div class="btn" id="deleteRow" onclick="deleteRow();">
-                        <i class="fa fa-minus-square"></i>Αφαίρεση γραμμής
-                    </div>
-                </div>
-                <div class="toolbarLine" id="undoredoLine">
-                    <div class="btn" id="undo"  onclick="undojexcel();">
-                        <i class="fa fa-undo"></i>Αναίρεση
-                    </div>
-                    <div class="btn" id="redo" onclick="redojexcel();">
-                        <i class="fa fa-redo"></i>Επανάληψη
-                    </div>
-
-                </div>
-                <div class="toolbarLine" id="secondLine" >
-                    
-                    <div class="btn" id="sortAsc"  onclick="sortAsc();">
-                        <i class="fa fa-sort-amount-up"></i>Αύξουσα Ταξινόμηση
-                    </div>
-                    <div class="btn" id="insertRow"  onclick="sortDesc();">
-                        <i class="fa fa-sort-amount-down"></i>Φθίνουσα Ταξινόμηση
-                    </div>
-                </div>
-                <div class="toolbarLine" id="thirdLine">
-                    <div class="btn" id="draw" onclick = "redraw();">
-                       <i class="fa fa-chart-bar" aria-hidden="true"></i>Γράφημα
-                    </div>
-                </div>
-                <div class="toolbarLine" id="fourthLine">
-                    <div class="btn" id="print" onclick="printDiv();">
-                        <i class="fa fa-print"></i>Εκτύπωση
-                    </div>
-                </div>
-            </div>
             <div id=" id="printArea">
                 <input type = "text" size = "50" id = "title" value = "Τίτλος"/>
                 <!--jexcel-->
@@ -68,6 +27,38 @@
                 </canvas>
                 </div>
                 <img src = "" style="display:none;width:470px;" id = "printImg"/>
+                            <div id="toolbar">
+                <div class="toolbarLine" id="firstLine" >
+                    <div class="btn" id="newFile"  onclick="init();">
+                        <img src="./imgs/new.svg" alt="Νέο">
+                    </div>
+                    <div class="btn" id="insertRow"  onclick="insertRow();">
+                        <img src="./imgs/insertRow.svg" alt="Εισαγωγή γραμμής">
+                    </div>
+                    <div class="btn" id="deleteRow" onclick="deleteRow();">
+                        <img src="./imgs/deleteRow.svg" alt="Αφαίρεση γραμμής">
+                    </div>
+                    <div class="btn" id="undo"  onclick="undojexcel();">
+                        <img src="./imgs/undo.svg" alt="Αναίρεση">
+                    </div>
+                    <div class="btn" id="redo" onclick="redojexcel();">
+                        <img src="./imgs/redo.svg" alt="Επανάληψη">
+                    </div>
+                    <div class="btn" id="sortAsc"  onclick="sortAsc();">
+                        <img src="./imgs/sortAsc.svg" alt="Αύξουσα Ταξινόμηση">
+                    </div>
+                    <div class="btn" id="insertRow"  onclick="sortDesc();">
+                        <img src="./imgs/sortDesc.svg" alt="Φθίνουσα Ταξινόμηση">
+                    </div>
+                    <div class="btn" id="draw" onclick = "redraw();">
+                        <img src="./imgs/barChart.svg" alt="Γράφημα">
+                    </div>
+                    <div class="btn" id="print" onclick="printDiv();">
+                        <img src="./imgs/print.svg" alt="Εκτύπωση">
+                    </div>
+                </div>
+            </div>
+
             </div>
         </div>
     </div>

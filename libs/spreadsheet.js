@@ -12,7 +12,10 @@ window.onload = init;
 var labelsArr = [];
 var dataArr = [];
 
+
+
 function redraw(){
+    console.log("inhere");
     /*avoid showing old data*/
     $("#chart-container").empty();
     $("#chart-container").html("<canvas id='myChart'>Your browser does not support HTML5</canvas>");
@@ -52,10 +55,6 @@ function redraw(){
                                 "Coral",
                                 "Navy",
                                 "Grey",],
-                borderColor: [
-                "Darkgray"
-                ],
-                borderWidth: 1
             }],
         },
         options: {
@@ -66,19 +65,28 @@ function redraw(){
             },
             legend: {
                 display: false,
+                
             },
             title: {
                 display: true,
-
+                fontColor: '#e4f000',
+                fontSize: 24,
                 text: $('#title').val(),
             },
             showTooltips: false,
             scales: {
                 yAxes: [{
+                    gridLines: {//lineWidth: 5,
+                                color: '#e4f000'},
                     ticks: {
                         beginAtZero:true,
-                        stepSize:1,
+                        
                     }
+                }],
+                xAxes: [{
+                    gridLines: {color: '#e4f000'},
+                    ticks: {fontColor: '#e4f000'},
+
                 }]
             }
         }
@@ -117,12 +125,12 @@ function deleteRow(){
 }
 
 function sortAsc(){
-    $('#my').jexcel('orderBy',2,2);
+    $('#my').jexcel('orderBy',1,2);
     //redraw();
 }
 
 function sortDesc(){
-    $('#my').jexcel('orderBy',2,1);
+    $('#my').jexcel('orderBy',1,1);
     //redraw();
 }
 
