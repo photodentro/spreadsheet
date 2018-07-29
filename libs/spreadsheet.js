@@ -69,7 +69,7 @@ function redraw(){
             },
             title: {
                 display: true,
-                fontColor: '#e4f000',
+                fontColor: 'black',
                 fontSize: 24,
                 text: $('#title').val(),
             },
@@ -77,15 +77,15 @@ function redraw(){
             scales: {
                 yAxes: [{
                     gridLines: {//lineWidth: 5,
-                                color: '#e4f000'},
+                                color: 'black'},
                     ticks: {
                         beginAtZero:true,
                         
                     }
                 }],
                 xAxes: [{
-                    gridLines: {color: '#e4f000'},
-                    ticks: {fontColor: '#e4f000'},
+                    gridLines: {color: 'black'},
+                    ticks: {fontColor: 'black'},
 
                 }]
             }
@@ -103,7 +103,7 @@ function init(){
         data:data,
         //onchange: function(){redraw();},
         colHeaders:  ['Είδος', 'Ποσότητα'],
-        colWidths: [ 300, 80 ],
+        colWidths: [ 330, 80 ],
         columns: [
             { type: 'text'},
             { type: 'numeric' },
