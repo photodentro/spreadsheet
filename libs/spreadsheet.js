@@ -103,13 +103,13 @@ function init(){
         data:data,
         //onchange: function(){redraw();},
         colHeaders:  ['Είδος', 'Ποσότητα'],
-        colWidths: [ 330, 80 ],
+        colWidths: [ 320, 80 ],
         columns: [
             { type: 'text'},
             { type: 'numeric' },
         ]
     });
-    //redraw();
+    redraw();
 }
 $('#title').change(function(){//redraw();
   });
@@ -135,9 +135,10 @@ function sortDesc(){
 }
 
 function printDiv(){
-    $('#printImg').css("display","block");
-    $('#printImg').print();
-    $('#printImg').css("display","none");
+    $('#printArea').css("display","block");
+    newWin = window.open("");
+    newWin.document.write($('#printArea').html());
+    $('#printArea').css("display","none");
 }
 
 function redojexcel(){
