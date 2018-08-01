@@ -12,17 +12,21 @@ window.onload = init;
 var labelsArr = [];
 var dataArr = [];
 var colorDict = {};
+var distinctColor = ["Red", "Green", "Yellow", "Blue", "Orange", "Purple", "Cyan", "Magenta", "Lime", 
+  "Pink", "Teal", "Lavender", "Brown", "Beige", "Maroon", "Mint", "Olive", "Coral", "Navy", "Grey",];
+var distinctColorIndex = 0;
 
 function getColors(){
     var colorArray = [];
     for (var i=0; i<labelsArr.length; i++){
         colorArray.push(colorDict[labelsArr[i]]);
     }
+    return(colorArray);
 }
 
 
 function redraw(){
-    console.log("inhere");
+    console.log(colorDict);
     /*avoid showing old data*/
     $("#chart-container").empty();
     $("#chart-container").html("<canvas id='myChart'>Your browser does not support HTML5</canvas>");
@@ -33,6 +37,10 @@ function redraw(){
     dataArr = [];
     data.forEach(function(item){
       labelsArr.push(item[0]);
+      if (!colorDict[item[0]]){//if there is no color, assign next distinct color
+        colorDict[item[0]] = distinctColor[distinctColorIndex];
+        distinctColorIndex = (distinctColorIndex + 1)%distinctColor.length;
+      }//if there is a colordict getColors will fetch when needed
       dataArr.push(item[1]);
     });
 
@@ -42,26 +50,7 @@ function redraw(){
             labels: labelsArr,
             datasets: [{
                 data: dataArr,
-                backgroundColor: ["Red",
-                                "Green",
-                                "Yellow",
-                                "Blue",
-                                "Orange",
-                                "Purple",
-                                "Cyan",
-                                "Magenta",
-                                "Lime",
-                                "Pink",
-                                "Teal",
-                                "Lavender",
-                                "Brown",
-                                "Beige",
-                                "Maroon",
-                                "Mint",
-                                "Olive",
-                                "Coral",
-                                "Navy",
-                                "Grey",],
+                backgroundColor: getColors(),
             }],
         },
         options: {
