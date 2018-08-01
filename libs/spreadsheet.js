@@ -11,7 +11,14 @@ window.onload = init;
 
 var labelsArr = [];
 var dataArr = [];
+var colorDict = {};
 
+function getColors(){
+    var colorArray = [];
+    for (var i=0; i<labelsArr.length; i++){
+        colorArray.push(colorDict[labelsArr[i]]);
+    }
+}
 
 
 function redraw(){

@@ -19,6 +19,10 @@
 .mainCell {
   display:table-cell; width:80%;}
 
+#toolbar{
+  width:70%; 
+  margin:0 auto;}
+
 .btn {
   float:left;
   width: 8%;
@@ -28,7 +32,7 @@
 
 .btn img{
   width:100%;
-  height:100%;}
+  height:40%;}
 
 .btn2 img{
   width:60%;
