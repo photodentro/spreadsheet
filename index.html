@@ -25,11 +25,15 @@
           <div class="btn" id="newFile"  onclick="init();">
             <img src="./imgs/new.svg" alt="Νέο" title="Νέο">
           </div>
+          <div class="btn" width="40px">
+          </div>
           <div class="btn" id="undo"  onclick="undojexcel();">
             <img src="./imgs/undo.svg" alt="Αναίρεση" title="Αναίρεση">
           </div>
           <div class="btn" id="redo" onclick="redojexcel();">
             <img src="./imgs/redo.svg" alt="Επανάληψη" title="Επανάληψη">
+          </div>
+          <div class="btn" width="40px">
           </div>          
           <div class="btn" id="insertRow"  onclick="insertRow();">
             <img src="./imgs/insertRow.svg" alt="Εισαγωγή γραμμής" title="Εισαγωγή γραμμής">
@@ -37,15 +41,22 @@
           <div class="btn" id="deleteRow" onclick="deleteRow();">
             <img src="./imgs/deleteRow.svg" alt="Αφαίρεση γραμμής" title="Αφαίρεση γραμμής">
           </div>
+          <div class="btn" width="40px">
+          </div>
           <div class="btn" id="sortAsc"  onclick="sortAsc();">
             <img src="./imgs/sortAsc.svg" alt="Αύξουσα Ταξινόμηση" title="Αύξουσα Ταξινόμηση">
           </div>
-          <div class="btn" id="insertRow"  onclick="sortDesc();">
+          <div class="btn" id="sortDesc"  onclick="sortDesc();">
             <img src="./imgs/sortDesc.svg" alt="Φθίνουσα Ταξινόμηση" title="Φθίνουσα Ταξινόμηση">
           </div>
-          <div class="btn" id="draw" onclick = "redraw();">
-            <img src="./imgs/barChart.svg" alt="Γράφημα" title="Γράφημα">
+          <div class="btn" width="40px">
           </div>
+          <div class="btn" id="draw" onclick = "redraw('bar');">
+            <img src="./imgs/barChart.svg" alt="Ραβδόγραμμα" title="Ραβδόγραμμα">
+          </div>
+          <div class="btn" id="draw" onclick = "redraw('pie');">
+            <img src="./imgs/barPie.svg" alt="Πίτα" title="Πίτα">
+          </div>          
           <div class="btn" id="print" onclick="printDiv();">
             <img src="./imgs/print.svg" alt="Εκτύπωση"  title="Εκτύπωση">
           </div>

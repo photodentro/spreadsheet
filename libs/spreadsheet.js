@@ -25,7 +25,7 @@ function getColors(){
 }
 
 
-function redraw(){
+function redraw(cType){
     console.log(colorDict);
     /*avoid showing old data*/
     $("#chart-container").empty();
@@ -44,16 +44,8 @@ function redraw(){
       dataArr.push(item[1]);
     });
 
-    var myChart = new Chart(ctx, {
-        type: 'bar',
-        data: {
-            labels: labelsArr,
-            datasets: [{
-                data: dataArr,
-                backgroundColor: getColors(),
-            }],
-        },
-        options: {
+    cOptions = {};
+    cOptions['bar'] = {
             animation:{
                 onComplete: function(animation){
                         $("#printImg").attr('src', this.toBase64Image());
@@ -86,6 +78,34 @@ function redraw(){
                 }]
             }
         }
+    cOptions['pie'] =  {animation:{
+                onComplete: function(animation){
+                        $("#printImg").attr('src', this.toBase64Image());
+                }
+            },
+            legend: {
+                display: false,
+                
+            },
+            title: {
+                display: true,
+                fontColor: 'black',
+                fontSize: 24,
+                text: $('#title').val(),
+            },
+            showTooltips: false,
+        }
+
+    var myChart = new Chart(ctx, {
+        type: cType,
+        data: {
+            labels: labelsArr,
+            datasets: [{
+                data: dataArr,
+                backgroundColor: getColors(),
+            }],
+        },
+        options: cOptions[cType]
     });
 
 }
@@ -105,7 +125,7 @@ function init(){
             { type: 'numeric' },
         ]
     });
-    redraw();
+    redraw('pie');
 }
 $('#title').change(function(){//redraw();
   });

@@ -1,9 +1,12 @@
+body {
+  background-image: url('../imgs/background.svg'); 
+  background-size: cover;
+}
 #container {
   display: table; 
   width: 950px; 
-  background-image: url('../imgs/background.svg'); 
   margin: 0 auto; 
-  background-size: 100% 100%;}
+}
 
 .tableRow {
   display: table-row;}
@@ -22,7 +25,7 @@
   text-align:center;}
 
 #toolbar{
-  width: 460px; 
+  width: 550px; 
   margin: 0 auto;}
 
 .btn {
