@@ -12,8 +12,8 @@ window.onload = init;
 var labelsArr = [];
 var dataArr = [];
 var colorDict = {};
-var distinctColor = ["Red", "Green", "Yellow", "Blue", "Orange", "Purple", "Cyan", "Magenta", "Lime", 
-  "Pink", "Teal", "Lavender", "Brown", "Beige", "Maroon", "Mint", "Olive", "Coral", "Navy", "Grey",];
+var distinctColor = ["Navy", "Red", "Green", "Yellow", "Blue", "Orange", "Purple", "Cyan", "Magenta", "Lime", 
+  "Pink", "Teal", "Lavender", "Brown", "Beige", "Maroon", "Mint", "Olive", "Coral",  "Grey",];
 var distinctColorIndex = 0;
 
 function getColors(){
@@ -152,8 +152,9 @@ function sortDesc(){
 
 function printDiv(){
     $('#printArea').css("display","block");
-    newWin = window.open("");
+    newWin = window.open("",width=595,height=842);
     newWin.document.write($('#printArea').html());
+    newWin.print();
     $('#printArea').css("display","none");
 }
 
