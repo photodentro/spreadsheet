@@ -1,5 +1,8 @@
-body {
-  background-image: url('../imgs/background.svg'); 
+html { 
+  background: url('../imgs/background.svg') no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
   background-size: cover;
 }
 #container {
